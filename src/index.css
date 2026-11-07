@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background-color: #ffffff;
+    color: #10231b;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Bricolage Grotesque', 'Manrope', system-ui, sans-serif;
+    line-height: 1.15;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: #059669;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 3px solid #059669;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Visible focus even when reduced motion / no outline */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible,
+  [role='button']:focus-visible,
+  [role='tab']:focus-visible {
+    outline: 3px solid #6ee7b7;
+    outline-offset: 3px;
+  }
+
+  /* On dark surfaces, use a brighter focus ring */
+  .on-dark:focus-visible {
+    outline-color: #6ee7b7;
+  }
+}
+
+@layer components {
+  .container-gh {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    background-color: #059669;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    min-height: 44px;
+    text-align: center;
+  }
+  .btn-primary:hover {
+    background-color: #047857;
+    box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.18);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #10231b;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    border: 1px solid #10231b;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    min-height: 44px;
+  }
+  .btn-ghost:hover {
+    background-color: #10231b;
+    color: #ffffff;
+  }
+
+  .btn-ghost-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #6ee7b7;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    border: 1px solid rgba(110, 231, 183, 0.4);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    min-height: 44px;
+  }
+  .btn-ghost-dark:hover {
+    background-color: rgba(110, 231, 183, 0.1);
+    border-color: #6ee7b7;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 100;
+    background: #059669;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+}
+
+@layer utilities {
+  .text-measure {
+    max-width: 75ch;
+  }
+  .text-measure-tight {
+    max-width: 65ch;
+  }
+
+  /* Respect reduced motion */
+  .reduce-motion *,
+  .reduce-motion *::before,
+  .reduce-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scroll-x {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #059669 #f4f6f5;
+  }
+  .scroll-x::-webkit-scrollbar {
+    height: 8px;
+  }
+  .scroll-x::-webkit-scrollbar-thumb {
+    background: #059669;
+    border-radius: 4px;
+  }
+
+  .safe-pb {
+    padding-bottom: max(0.625rem, env(safe-area-inset-bottom));
+  }
+}
